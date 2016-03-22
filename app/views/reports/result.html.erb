@@ -1,14 +1,12 @@
-<h1>Hits for <%= params[:search] %></h1>
 <p>Total time before HTML is generated: <%= Time.now - @start_time %> s</p>
 <p>Memory used before HTML is generated: <%= @memory_used %> MB</p>
-<p>Number of hits: <%= @hits.length %></p>
 
 <table>
   <thead>
     <tr>
-      <th>Matching Gene Name</th>
-      <th>Matching DNA</th>
-      <th>Percent Similarity</th>
+      <th>Assembly Name</th>
+      <th>Gene's DNA</th>
+      <th>Match Gene Name</th>
     </tr>
   </thead>
   <tbody>
