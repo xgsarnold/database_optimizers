@@ -26,7 +26,6 @@ Second, since the load time was still quite long at just under 7 seconds, I refa
 
 ## Example SQL Query for Search Bar
 
-SELECT
 * FROM assemblies AS a
 *  INNER JOIN sequences AS s On a.id = s.assembly_id
 *  INNER JOIN genes AS g ON s.id = g.sequence_id
