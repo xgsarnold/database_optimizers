@@ -19,9 +19,23 @@ class ReportsController < ApplicationController
 end
 
 
-# When attempting to consolidate queires in, for example, the search action,
-# it may be useful to use .includes methods like one of the following:
-# @assembly = Assembly.where(name: params[:search])
-# @gene = Gene.where(dna: params[:search])
-# @hit = Hit.where(match_gene_name: params[:search])
-# @assembly = Assembly.includes([:genes, :hits])
+
+def seach
+
+# SELECT
+# FROM assemblies AS a
+#   INNER JOIN sequences AS s On a.id = s.assembly_id
+#   INNER JOIN genes AS g ON s.id = g.sequence_id
+#   INNER JOIN hits AS h ON g.id = h.subject_id AND h.subject_type = "Gene"
+# WHERE a.name LIKE "%?%"
+#   OR g.dna LIKE "%?%"
+#   OR h.match_gene_name LIKE "%?%";
+
+  @hits = Hit.joins("JOIN genes ON genes.id = hits.subject_id AND hits.subject_type = 'Gene'")
+      .joins("JOIN sequences ON sequences.id = genes.sequence_id")
+      .joins("JOIN assemblies ON assemblies.id = sequences.assembly_id")
+      .where("assemblies.name LIKE '%?%' OR genes.dna LIKE '%?%' OR hits.match_gene_name LIKE '%?%'",
+      params[:search], params[:search], params[:search])
+
+  @search = params[:search]
+  @assembly = Assembly.includes([{:genes => dna, :hits => match_gene_name}])
