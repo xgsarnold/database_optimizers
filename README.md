@@ -1,5 +1,9 @@
 # Database Optimizations
 
+Initial seed time: 1465.676242 seconds
+Seed time with indices: 1958.015949 seconds
+
+
 ## Description
 
 Given an existing application which generates a report from a large data set, improve the efficiency of the report using database optimization methods.
@@ -34,14 +38,18 @@ Once you pull down the application from GitHub, run `bundle install` and `rake d
 1. Run `rake db:seed`.  When it is finished, it will tell you how long the process took (in seconds).  Record the amount of time.
 1. Turn on your server and open your browser to `localhost:3000`.  You will have to sort out which parameters you need to pass it.
 1. Open Chrome's timeline in developer tools, then hit Cmd-R on your keyboard.  The timeline will track time to load the page.  Record the following:
-  1. Total time in Chrome's timeline
-  1. "Idle" time in Chrome's timeline
-  1. The time given by Rails at the top of the page
-  1. The time given by Rails at the bottom of the page (sorry for the long scroll)
-  1. Explain what these four numbers are and which are subsets of the others
+  1. Total time in Chrome's timeline = 1395.2
+  1. "Idle" time in Chrome's timeline =
+  1. The time given by Rails at the top of the page =
+  1. The time given by Rails at the bottom of the page (sorry for the long scroll) = 1361.317555
+  1. Explain what these four numbers are and which are subsets of the others =
 1. Add appropriate indices to the data structure (via migrations).
 1. Record how long it takes to run the migrations that add indices.
-1. Reload the root page and record the four time numbers again.  Calculate your percent improvement in runtime.
+  -sequence index: .0013s
+  -gene index: .0019s
+  -hit index: .0013s
+  -assembly index: .0015s
+1. Reload the root page and record the four time numbers again.  Calculate your percent improvement in runtime. (Accidentally ran rake db:drop before refreshing root page). (5.771778 seconds to load according to rails after putting indices in).
 1. Examine the code that is run when the root path loads.  Modify the controller commands which access the database to make them more efficient.
 1. Calculate your percent improvement in runtime.
 1. Once you have optimized your code as much as you think you can, drop the database, run `rake db:migrate`, and then time how long it takes to run `rake db:seed`.  Was there an improvement or a worsening of runtime?  By what percent and why?

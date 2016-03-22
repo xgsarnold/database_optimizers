@@ -1,7 +1,7 @@
 <h1>Hits for <%= @assembly.name %></h1>
 <p>Total time before HTML is generated: <%= Time.now - @start_time %> s</p>
 <p>Memory used before HTML is generated: <%= @memory_used %> MB</p>
-<p>Number of hits: <%= @hits.length %></p>
+<p>Number of hits: <%= @assembly.hits.length %></p>
 
 <table>
   <thead>
@@ -12,7 +12,7 @@
     </tr>
   </thead>
   <tbody>
-    <% @hits.each do |h| %>
+    <% @assembly.hits.each do |h| %>
       <tr>
         <td><%= h.match_gene_name %></td>
         <td><%= h.match_gene_dna.first(100) %></td>
