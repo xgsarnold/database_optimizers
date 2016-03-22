@@ -1,0 +1,30 @@
+<p>Total time before HTML is generated: <%= Time.now - @start_time %> s</p>
+<p>Memory used before HTML is generated: <%= @memory_used %> MB</p>
+
+<h1>Search Below</h1>
+<%= form_tag search_path do %>
+<div><%= text_field_tag :search, nil, placeholder: "assembly name, DNA or gene name" %></div>
+<div><%= submit_tag "Search" %></div>
+<% end %>
+
+<% if @assembly %>
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>DNA</th>
+      <th>Match Gene Name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @assembly.each do |h| %>
+      <tr>
+        <td><%= h.name %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<% end %>
+
+<p>Total time before HTML is generated: <%= Time.now - @start_time %> s</p>
+<p>Memory used after HTML is generated: <%= memory_in_mb %> MB</p>

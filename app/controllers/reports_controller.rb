@@ -3,14 +3,17 @@ class ReportsController < ApplicationController
 
   def all_data
     @start_time = Time.now
-    @hits = []
     @assembly = Assembly.find_by_name(params[:name])
-    # @assembly.hits.each do |h|
-    #   @hits << h
-    # end
-    # @hits = @assembly.hits.order(desc: id)
-    # @hits.sort! {|a, b| b.percent_similarity <=> a.percent_similarity}
+    @memory_used = memory_in_mb
+  end
 
+  def search
+    @start_time = Time.now
+    # @assembly = Assembly.where(name: params[:search])
+    # @gene = Gene.where(dna: params[:search])
+    # @hit = Hit.where(match_gene_name: params[:search])
+    # @assembly = Assembly.includes([:genes, :hits])
+    @assembly = Assembly.find_by_name(params[:name])
     @memory_used = memory_in_mb
   end
 
