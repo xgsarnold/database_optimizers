@@ -25,6 +25,10 @@ class ReportsController < ApplicationController
   end
 
   def import
+    # MakeReportJob.perform_now()
+  end
+
+  def upload
 
   end
 

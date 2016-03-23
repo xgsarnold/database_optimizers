@@ -3,7 +3,8 @@ Rails.application.routes.draw do
 
   get 'reports/search' => 'reports#search', as: :search
   post 'reports/result' => 'reports#result', as: :result
-  post 'reports/import' => 'reports#import', as: :import
+  get 'reports/import' => 'reports#import', as: :import
+  post 'reports/upload' => 'reports#import', as: :upload
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
