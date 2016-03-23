@@ -25,11 +25,22 @@ class ReportsController < ApplicationController
   end
 
   def import
+    # upload_file = params[:file]
+    # MakeReportJob.perform_later(upload_file.)
     # MakeReportJob.perform_now()
   end
 
   def upload
+    upload_file = params[:file]
+    MakeReportJob.perform_later(upload_file.path)
+  end
 
+  def write_email
+    params[:address]
+  end
+
+  def send_email
+    # rails generate mailer NameName different_email_type different_email_type
   end
 
 
