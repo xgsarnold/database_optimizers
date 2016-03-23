@@ -24,6 +24,11 @@ class ReportsController < ApplicationController
      end
   end
 
+  def import
+
+  end
+
+
 
   private def memory_in_mb
     `ps -o rss -p #{$$}`.strip.split.last.to_i / 1024
