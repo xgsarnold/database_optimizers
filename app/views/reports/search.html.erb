@@ -1,5 +1,6 @@
-<h1>Search Below</h1>
+<h1>Search Below and Type Email Where You Want Results To Be Sent</h1>
 <%= form_tag result_path do %>
-<div><%= text_field_tag :search, params[:search] %></div>
+<div><%= text_field_tag :search, params[:search], placeholder: "Type Query Here" %></div>
+<div><%= email_field_tag :email, nil, placeholder: "Type Email Here" %></div>
 <div><%= submit_tag "Search", :name => nil %></div>
 <% end %>

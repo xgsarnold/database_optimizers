@@ -14,7 +14,8 @@ class ReportsController < ApplicationController
   def result
     @start_time = Time.now
     @search = params[:search]
-    CompileReportJob.perform_later(@search)
+    @email = params[:email]
+    CompileReportJob.perform_later(@search, @email)
     redirect_to reports_write_email_path
   end
 
@@ -27,12 +28,9 @@ class ReportsController < ApplicationController
   end
 
   def write_email
-
   end
 
   def send_email
-    @email = params[:email]
-    # rails generate mailer NameName different_email_type different_email_type
   end
 
 
