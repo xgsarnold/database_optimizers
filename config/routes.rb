@@ -5,6 +5,9 @@ Rails.application.routes.draw do
   post 'reports/result' => 'reports#result', as: :result
   get 'reports/import' => 'reports#import', as: :import
   post 'reports/upload' => 'reports#upload', as: :upload
+  get 'reports/write_email' => 'reports#write_email'
+  post 'reports/send_email' => 'reports#send_email'
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

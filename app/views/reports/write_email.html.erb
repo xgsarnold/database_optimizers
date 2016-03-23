@@ -1,5 +1,6 @@
 <h1>Please enter your information</h1>
 
-<%= form_tag report_send_email_path do %>
-<%= text_field_tag %>
+<%= form_tag reports_send_email_path do %>
+<%= email_field_tag :email %>
+<%= submit_tag "Send Email", :name => nil %>
 <% end %>

@@ -13,15 +13,9 @@ class ReportsController < ApplicationController
 
   def result
     @start_time = Time.now
-    if params[:search]
-       results = []
-       params[:search].split(" ").each do |w|
-         q = "%#{w}%"
-         results += Hit.where("match_gene_name LIKE ?", q)
-         results += Hit.where(subject: Gene.joins(sequence: :assembly).where("genes.dna LIKE ? OR sequences.dna LIKE ? OR assemblies.name LIKE ?", q, q, q))
-       end
-       @hits = results.uniq
-     end
+    @search = params[:search]
+    CompileReportJob.perform_later(@search)
+    redirect_to reports_write_email_path
   end
 
   def import
@@ -33,10 +27,11 @@ class ReportsController < ApplicationController
   end
 
   def write_email
-    params[:address]
+
   end
 
   def send_email
+    @email = params[:email]
     # rails generate mailer NameName different_email_type different_email_type
   end
 

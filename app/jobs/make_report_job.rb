@@ -22,4 +22,8 @@ class MakeReportJob < ActiveJob::Base
       end
     end
   end
+
+  # def perform_delivery(*args)
+  #   Rails.root.join("tmp", "report#{rand(10000)}.csv")
+  # end
 end
