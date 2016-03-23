@@ -1,3 +1,5 @@
+require 'csv'
+
 class MakeReportJob < ActiveJob::Base
   queue_as :default
 

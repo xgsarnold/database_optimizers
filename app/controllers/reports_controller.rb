@@ -25,14 +25,11 @@ class ReportsController < ApplicationController
   end
 
   def import
-    # upload_file = params[:file]
-    # MakeReportJob.perform_later(upload_file.)
-    # MakeReportJob.perform_now()
   end
 
   def upload
-    upload_file = params[:file]
-    MakeReportJob.perform_later(upload_file.path)
+    csv_upload = params[:file]
+    MakeReportJob.perform_later(csv_upload.path)
   end
 
   def write_email
