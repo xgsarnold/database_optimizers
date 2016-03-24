@@ -6,7 +6,7 @@ class ReportMailer < ApplicationMailer
   #   en.report_mailer.search_results.subject
   #
   def search_results(email, path)
-    @greeting = "Hello, attached is the report requested from Umbrella Organization"
+    @greeting = "Hello, attached is the report requested from the Umbrella Organization"
 
     attachments['report.csv'] = File.read(path)
     mail to: email, subject: "The report you requested."
