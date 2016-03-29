@@ -22,6 +22,13 @@ class CompileReportJob < ActiveJob::Base
       end
     end
 
-    ReportMailer.search_results(@email, file_path).deliver_now
+    obj = BUCKET_NAME.objects["report_#{Time.now}"]
+
+    obj.write(
+      file: file_path,
+      acl: :public_read
+    )
+
+    ReportMailer.search_results(@email, obj.public_url).deliver_now
   end
 end

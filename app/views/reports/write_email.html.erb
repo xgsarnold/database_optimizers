@@ -1,4 +1,10 @@
 <h1>Your Report Is Being Processed</h1>
 
+<%= form_tag result_path, multipart: true do %>
+  <div><%= file_field_tag :file %></div>
+  <div><%= submit_tag "Search", :name => nil %></div>
+<% end %>
+
+
 
 <%= link_to 'Process another report', search_path %>

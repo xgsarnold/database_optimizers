@@ -28,6 +28,9 @@ class ReportsController < ApplicationController
   end
 
   def write_email
+    # File.open("tmp/temp.png", "wb") do
+    #   file.write << params[:file].read
+    # end
   end
 
   def send_email
