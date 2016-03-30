@@ -22,7 +22,16 @@ class CompileReportJob < ActiveJob::Base
       end
     end
 
-    obj = BUCKET_NAME.objects["report_#{Time.now}"]
+    AWS.config(
+      :access_key_id => ENV['AWS_ACCESS_KEY_ID'],
+      :secret_access_key => ENV['AWS_SECRET_ACCESS_KEY']
+    )
+
+    s3 =  AWS::S3.new
+
+    bucket = s3.buckets[ENV['BUCKET_NAME']]
+
+    obj = bucket.objects["report_#{Time.now}"]
 
     obj.write(
       file: file_path,
